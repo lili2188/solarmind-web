@@ -3,233 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolarMind Tracker AI | Energía Inteligente</title>
+    <title>SolarMind Tracker AI | Energía Inteligente Ecuador</title>
     <style>
         :root {
-            --primary: #2e7d32; /* Verde oscuro */
-            --secondary: #fb8c00; /* Naranja */
-            --light: #f1f8e9; /* Verde muy claro */
-            --dark: #263238; /* Gris oscuro */
+            --primary: #2e7d32; /* Verde Ecológico */
+            --secondary: #fb8c00; /* Naranja Solar */
+            --light: #f1f8e9; 
+            --dark: #263238;
+            --white: #ffffff;
         }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; color: var(--dark); line-height: 1.6; }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: var(--dark); line-height: 1.6; scroll-behavior: smooth; }
+        
+        /* Navegación */
+        nav { background: var(--white); padding: 15px 10%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        nav .logo { font-weight: bold; font-size: 1.5rem; color: var(--primary); }
+        nav a { text-decoration: none; color: var(--dark); margin-left: 20px; font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: var(--secondary); }
+
+        /* Hero Section */
         header { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1509391366360-fe5bb584850a?auto=format&fit=crop&w=1350&q=80'); /* Imagen de fondo de paneles solares */
-            height: 80vh; background-size: cover; background-position: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1509391366360-fe5bb584850a?auto=format&fit=crop&w=1350&q=80'); 
+            height: 85vh; background-size: cover; background-position: center;
             color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; 
         }
-        .btn { padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; margin: 10px; transition: 0.3s; }
-        .btn-primary { background: var(--secondary); color: white; }
-        .btn-secondary { background: white; color: var(--primary); }
-        .btn-primary:hover { background: #e65100; }
-        .btn-secondary:hover { background: var(--light); }
+        header h1 { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        header p { font-size: clamp(1rem, 2vw, 1.5rem); margin-bottom: 30px; max-width: 800px; }
 
-        section { padding: 60px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
-        .card { background: var(--light); padding: 25px; border-radius: 10px; border-bottom: 4px solid var(--primary); text-align: center; }
-        .card img { max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
-        
-        h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        h2 { color: var(--primary); border-bottom: 2px solid var(--secondary); display: inline-block; padding-bottom: 5px; margin-bottom: 30px; }
-        h3 { color: var(--primary); margin-top: 0; }
-        p { margin-bottom: 10px; }
+        .btn { padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; display: inline-block; }
+        .btn-primary { background: var(--secondary); color: white; border: 2px solid var(--secondary); }
+        .btn-primary:hover { background: transparent; color: var(--secondary); }
 
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { text-align: left; padding: 15px; border-bottom: 1px solid #ddd; }
-        th { background-color: var(--primary); color: white; }
+        /* Secciones */
+        section { padding: 80px 10%; }
+        h2 { color: var(--primary); font-size: 2.5rem; text-align: center; margin-bottom: 50px; position: relative; }
+        h2::after { content: ''; width: 80px; height: 4px; background: var(--secondary); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
 
-        footer { background: var(--dark); color: white; text-align: center; padding: 40px; }
-        footer a { color: var(--secondary); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; border-top: 5px solid var(--primary); }
+        .card img { width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px; }
 
-        /* Estilos para el formulario de contacto */
-        .contact-form { max-width: 600px; margin: 30px auto; background: var(--light); padding: 30px; border-radius: 10px; }
-        .contact-form label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--primary); }
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .contact-form textarea { resize: vertical; min-height: 100px; }
-        .contact-form input[type="submit"] {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background 0.3s ease;
-        }
-        .contact-form input[type="submit"]:hover { background: #1b5e20; }
+        /* WhatsApp Button */
+        .wsp-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1000; display: flex; align-items: center; gap: 10px; }
+        .wsp-btn:hover { background: #128c7e; transform: scale(1.05); }
+
+        /* Formulario */
+        .contacto-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; background: var(--light); padding: 40px; border-radius: 20px; }
+        form input, form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd; }
+        form input[type="submit"] { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; }
+
+        footer { background: var(--dark); color: white; padding: 40px 10%; text-align: center; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>SolarMind Tracker AI</h1>
-        [cite_start]<p>Deja que la IA siga al sol por ti[cite: 55].</p>
+    <a href="https://wa.me/593991234567?text=Hola,%20estoy%20interesado%20en%20SolarMind%20Tracker%20AI" class="wsp-btn" target="_blank">
+        💬 Chatea con nosotros
+    </a>
+
+    <nav>
+        <div class="logo">SolarMind Tracker AI</div>
         <div>
-            [cite_start]<a href="#contacto" class="btn btn-primary">Solicita una prueba piloto [cite: 60]</a>
-            <a href="#beneficios" class="btn btn-secondary">Ver Beneficios</a>
+            <a href="#inicio">Inicio</a>
+            <a href="#mvp">Producto</a>
+            <a href="#contacto">Contacto</a>
         </div>
+    </nav>
+
+    <header id="inicio">
+        <h1>Deja que la IA siga al sol por ti</h1>
+        <p>Innovación ecuatoriana: trackers inteligentes que aumentan tu producción energética hasta un 25%.</p>
+        <a href="#contacto" class="btn btn-primary">SOLICITAR PRUEBA PILOTO</a>
     </header>
 
-    <section id="sobre-nosotros">
-        <h2>¿Qué es SolarMind Tracker AI?</h2>
+    <section id="mvp">
+        <h2>Nuestro Producto Real</h2>
         <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1509391366360-fe5bb584850a?auto=format&fit=crop&w=600&h=400&q=80" alt="Paneles solares en un campo">
-                [cite_start]<p>Es un sistema de seguimiento solar inteligente que combina energía renovable, automatización e IA para maximizar la captación de energía[cite: 2].</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1620288820427-e9a2630f9a2d?auto=format&fit=crop&w=600&h=400&q=80" alt="Diagrama de IA y optimización solar">
-                [cite_start]<p>A diferencia de los modelos tradicionales, utilizamos algoritmos predictivos que consideran la nubosidad, radiación y temperatura para la posición óptima del sol[cite: 4].</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&w=600&h=400&q=80" alt="Gráficos de eficiencia energética">
-                <h3>Inteligencia que aprende</h3>
-                <p>Nuestro sistema analiza variables críticas para optimizar la captación: **Nubosidad, radiación, temperatura y patrones históricos.**</p>
+            <div class="card" style="grid-column: span 1; max-width: 700px; margin: 0 auto;">
+                <img src="LOGO.JPG" alt="SolarMind Tracker AI Prototipo" onerror="this.src='https://via.placeholder.com/600x400?text=Asegúrate+de+que+la+foto+se+llame+LOGO.JPG'">
+                <h3>Tracker Inteligente SolarMind v1.0</h3>
+                <p>Diseñado específicamente para las condiciones climáticas de Ecuador. Utiliza IA para predecir nubosidad y optimizar la orientación en tiempo real.</p>
             </div>
         </div>
     </section>
 
     <section id="beneficios" style="background: #fafafa;">
-        [cite_start]<h2>Nuestra Propuesta de Valor [cite: 19]</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Beneficio</th>
-                    <th>Impacto Real</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Eficiencia Energética</strong></td>
-                    [cite_start]<td>Incrementa la producción entre un **15% y 25%**[cite: 21].</td>
-                </tr>
-                <tr>
-                    <td><strong>Reducción de Pérdidas</strong></td>
-                    [cite_start]<td>Minimiza las pérdidas por mala orientación del panel[cite: 23].</td>
-                </tr>
-                <tr>
-                    <td><strong>Automatización</strong></td>
-                    [cite_start]<td>Funcionamiento autónomo sin intervención humana[cite: 25].</td>
-                </tr>
-                 <tr>
-                    <td><strong>Monitoreo en Tiempo Real</strong></td>
-                    [cite_start]<td>Visualización de energía generada vs. panel fijo en nuestra plataforma web[cite: 18].</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section id="mvp">
-        [cite_start]<h2>Componentes del Producto Mínimo Viable (MVP) [cite: 5]</h2>
+        <h2>¿Por qué SolarMind?</h2>
         <div class="grid">
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1587588354921-127e997f0237?auto=format&fit=crop&w=600&h=400&q=80" alt="Tracker solar de un eje">
-                [cite_start]<h3>Tracker de un eje [cite: 8]</h3>
-                [cite_start]<p>Diseño horizontal robusto con sensores básicos de radiación y temperatura[cite: 9].</p>
+                <h3>+25% Eficiencia</h3>
+                <p>Más energía captada en comparación con paneles estáticos tradicionales.</p>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1550005892-91efd765057a?auto=format&fit=crop&w=600&h=400&q=80" alt="Módulo IoT">
-                [cite_start]<h3>Módulo IoT [cite: 11]</h3>
-                [cite_start]<p>Para una recolección de datos eficiente y conectividad constante[cite: 12] con nuestra plataforma.</p>
+                <h3>IA Predictiva</h3>
+                <p>Algoritmos que aprenden del sol y el clima local diariamente.</p>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1598009210967-0c7f1a3b5a1b?auto=format&fit=crop&w=600&h=400&q=80" alt="Cerebro de IA">
-                [cite_start]<h3>Algoritmo de IA [cite: 14]</h3>
-                [cite_start]<p>El "cerebro" que ajusta el ángulo del panel y aprende del comportamiento solar diario[cite: 15].</p>
-            </div>
-             <div class="card">
-                <img src="https://images.unsplash.com/photo-1587588354921-127e997f0237?auto=format&fit=crop&w=600&h=400&q=80" alt="Tracker solar de un eje">
-                <h3>Plataforma Web Intuitiva</h3>
-                [cite_start]<p>Control total y comparativas de rendimiento en tiempo real, accesible desde cualquier dispositivo[cite: 18].</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="para-quien" style="background: #fafafa;">
-        <h2>Ideal para Sectores Estratégicos</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1550947702-8631557053e1?auto=format&fit=crop&w=600&h=400&q=80" alt="Campo agrícola con paneles solares">
-                [cite_start]<h3>Zonas Agrícolas [cite: 27]</h3>
-                <p>Optimiza el bombeo de agua y sistemas de riego con energía sostenible y eficiente.</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1593026330419-4b68f5c9e2b1?auto=format&fit=crop&w=600&h=400&q=80" alt="Finca rural con paneles solares">
-                [cite_start]<h3>Fincas Rurales [cite: 27]</h3>
-                <p>Logra autonomía energética con máxima eficiencia, reduciendo costos operativos a largo plazo.</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1621258169600-9e6b54203e0e?auto=format&fit=crop&w=600&h=400&q=80" alt="Pequeña planta solar">
-                [cite_start]<h3>Pequeñas Plantas Solares [cite: 27]</h3>
-                <p>Escalabilidad para proyectos en crecimiento, maximizando el retorno de inversión desde el inicio.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="roadmap">
-        [cite_start]<h2>Hoja de Ruta: De la Prueba al Éxito [cite: 28]</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Fase 1: Validación Técnica</h3>
-                [cite_start]<p>Instalación de 3 a 5 unidades piloto en entornos reales. Medición y recolección de datos detallados durante 60-90 días[cite: 34, 38].</p>
-            </div>
-            <div class="card">
-                <h3>Fase 2: Validación de Mercado</h3>
-                [cite_start]<p>Presentación de resultados de ROI (Retorno de Inversión) y ajustes según el feedback de los primeros usuarios[cite: 42, 43].</p>
-            </div>
-            <div class="card">
-                <h3>Fase 3: Lanzamiento</h3>
-                [cite_start]<p>Venta limitada a *early adopters* con un modelo de suscripción al software de IA, asegurando un soporte personalizado[cite: 44, 45].</p>
+                <h3>Monitoreo IoT</h3>
+                <p>Control total desde nuestra plataforma web en cualquier lugar del país.</p>
             </div>
         </div>
     </section>
 
     <section id="contacto">
-        [cite_start]<h2>¿Listo para unirte a la energía inteligente? [cite: 64]</h2>
-        [cite_start]<p>"No es solo un panel solar, es un sistema que aprende del sol."[cite: 57]</p>
-        <div class="contact-form">
-            <form action="#" method="POST">
-                <label for="nombre">Nombre Completo:</label>
-                <input type="text" id="nombre" name="nombre" required>
-
-                <label for="empresa">Empresa / Institución:</label>
-                <input type="text" id="empresa" name="empresa">
-
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="telefono">Teléfono:</label>
-                <input type="text" id="telefono" name="telefono" placeholder="+593 99 123 4567" required>
-
-                <label for="ciudad">Ciudad (Ecuador):</label>
-                <input type="text" id="ciudad" name="ciudad" placeholder="Ej: Quito, Guayaquil, Cuenca" required>
-
-                <label for="mensaje">Mensaje (Cuéntanos sobre tu proyecto):</label>
-                <textarea id="mensaje" name="mensaje"></textarea>
-
-                <input type="submit" value="Enviar Solicitud">
+        <h2>Contacto en Ecuador</h2>
+        <div class="contacto-container">
+            <div>
+                <h3>Oficinas Centrales</h3>
+                <p>📍 Av. Amazonas N35-123, Edificio Sol, Quito.</p>
+                <p>📞 +593 2 399-59224</p>
+                <p>📱 +593 99 123 4567</p>
+                <p>✉️ contacto@solarmindtracker.ec</p>
+                <hr>
+                <p><strong>Fase actual:</strong> Estamos instalando 5 unidades piloto. ¡Asegura la tuya!</p>
+            </div>
+            <form action="#">
+                <input type="text" placeholder="Tu Nombre" required>
+                <input type="email" placeholder="Tu Correo" required>
+                <input type="text" placeholder="Ciudad / Provincia" required>
+                <textarea placeholder="Cuéntanos sobre tu finca o proyecto"></textarea>
+                <input type="submit" value="Enviar Mensaje">
             </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 SolarMind Tracker AI. Todos los derechos reservados.</p>
-        <p>
-            <strong>Dirección:</strong> Av. Amazonas N35-123 y La Pinta, Edificio Sol, Piso 10, Quito, Ecuador<br>
-            <strong>Teléfono:</strong> +593 2 399-XXXX<br>
-            <strong>Celular de Contacto:</strong> +593 99 123 4567<br>
-            <strong>Email:</strong> <a href="mailto:contacto@solarmindtracker.ec">contacto@solarmindtracker.ec</a>
-        </p>
-        [cite_start]<p>"No es solo un panel solar, es un sistema que aprende del sol."[cite: 57]</p>
+        <p>&copy; 2026 SolarMind Tracker AI - Innovación para el Agro Ecuatoriano</p>
+        <p><em>"No es solo un panel solar, es un sistema que aprende del sol."</em></p>
     </footer>
 
 </body>
