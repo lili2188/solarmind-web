@@ -6,141 +6,180 @@
     <title>SolarMind Tracker AI | Energía Inteligente Ecuador</title>
     <style>
         :root {
-            --primary: #2e7d32;
-            --secondary: #fb8c00;
-            --light: #f1f8e9; 
-            --dark: #263238;
+            --primary: #2e7d32; /* Verde Bosque */
+            --secondary: #fb8c00; /* Naranja Solar */
+            --accent: #00c853; /* Verde Brillante */
+            --dark: #1a1a1a;
+            --light: #f4f9f1;
             --white: #ffffff;
         }
 
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: var(--dark); line-height: 1.6; scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; color: var(--dark); line-height: 1.6; scroll-behavior: smooth; background-color: var(--white); }
         
-        nav { background: var(--white); padding: 15px 10%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        nav .logo { font-weight: bold; font-size: 1.5rem; color: var(--primary); }
-        nav a { text-decoration: none; color: var(--dark); margin-left: 20px; font-weight: 500; transition: 0.3s; }
+        /* Navegación */
+        nav { background: var(--white); padding: 1rem 10%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
+        nav .logo-txt { font-weight: 800; font-size: 1.6rem; color: var(--primary); letter-spacing: -1px; }
+        nav a { text-decoration: none; color: var(--dark); margin-left: 25px; font-weight: 600; transition: 0.3s; }
         nav a:hover { color: var(--secondary); }
 
+        /* Hero Section */
         header { 
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1509391366360-fe5bb584850a?auto=format&fit=crop&w=1350&q=80'); 
-            height: 85vh; background-size: cover; background-position: center;
-            color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2072&auto=format&fit=crop'); 
+            height: 80vh; background-size: cover; background-position: center;
+            color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 10%; 
         }
-        header h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 10px; }
-        header p { font-size: 1.2rem; font-style: italic; color: var(--secondary); margin-bottom: 30px; }
+        header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1rem; line-height: 1.1; }
+        header p { font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom: 2rem; color: #e0e0e0; max-width: 900px; font-weight: 300; }
+        header strong { color: var(--secondary); }
 
-        .btn { padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; display: inline-block; }
-        .btn-primary { background: var(--secondary); color: white; border: 2px solid var(--secondary); }
+        .btn { padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.4s; display: inline-block; font-size: 1.1rem; border: none; cursor: pointer; }
+        .btn-primary { background: var(--secondary); color: white; box-shadow: 0 4px 15px rgba(251, 140, 0, 0.4); }
+        .btn-primary:hover { transform: scale(1.05); background: #ef6c00; }
 
-        section { padding: 70px 10%; }
-        h2 { color: var(--primary); font-size: 2.2rem; text-align: center; margin-bottom: 40px; }
+        /* Secciones */
+        section { padding: 100px 10%; }
+        h2 { color: var(--primary); font-size: 2.8rem; text-align: center; margin-bottom: 50px; }
+        h2 span { color: var(--secondary); }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        /* Misión y Visión */
-        .mision-vision { background: var(--light); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-radius: 20px; }
-        .mision-vision div { padding: 20px; }
+        /* Misión y Visión Card */
+        .mv-card { background: var(--light); padding: 40px; border-radius: 30px; border: 1px solid #e0eec0; }
+        .mv-card h3 { color: var(--primary); font-size: 1.8rem; margin-top: 0; }
 
         /* Propuesta de Valor */
-        .propuesta-valor { list-style: none; padding: 0; font-size: 1.1rem; }
-        .propuesta-valor li { margin-bottom: 15px; display: flex; align-items: center; }
-        .propuesta-valor li span { color: var(--primary); font-weight: bold; margin-right: 10px; font-size: 1.3rem; }
+        .propuesta-box { background: var(--primary); color: white; padding: 50px; border-radius: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .propuesta-box h2 { color: white; text-align: left; }
+        .check-list { list-style: none; padding: 0; }
+        .check-list li { font-size: 1.25rem; margin-bottom: 20px; display: flex; align-items: center; }
+        .check-list li::before { content: '✔'; margin-right: 15px; background: var(--secondary); color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.9rem; flex-shrink: 0; }
+
+        /* Producto Image */
+        .img-container { text-align: center; margin-top: 50px; }
+        .img-container img { max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 5px solid var(--white); }
 
         /* Testimonios */
-        .testimonio-card { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-left: 5px solid var(--secondary); }
-        .testimonio-card p { font-style: italic; }
-        .testimonio-card h4 { margin-top: 15px; color: var(--primary); }
+        .testimonio { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); position: relative; }
+        .testimonio::before { content: '"'; font-size: 5rem; color: var(--light); position: absolute; top: 10px; left: 20px; font-family: serif; }
+        .testimonio p { position: relative; z-index: 1; font-style: italic; color: #555; }
+        .testimonio .autor { margin-top: 20px; font-weight: bold; color: var(--primary); display: block; }
 
-        .wsp-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        /* WhatsApp */
+        .wsp { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s; }
+        .wsp:hover { transform: translateY(-5px); background: #128c7e; }
 
-        footer { background: var(--dark); color: white; padding: 40px 10%; text-align: center; }
+        /* Contacto / Footer */
+        footer { background: var(--dark); color: white; padding: 80px 10% 40px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
+        .footer-info h4 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 20px; }
+        .footer-info p { margin: 10px 0; color: #bbb; }
+        .footer-info strong { color: white; }
+
+        @media (max-width: 768px) {
+            .propuesta-box { grid-template-columns: 1fr; padding: 30px; }
+            section { padding: 60px 5%; }
+        }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/593991234567?text=Hola,%20deseo%20información%20de%20SolarMind" class="wsp-btn" target="_blank">📲 WhatsApp Directo</a>
+    <a href="https://wa.me/593987654321?text=Hola,%20estoy%20interesado%20en%20SolarMind%20Tracker" class="wsp" target="_blank">📲 WhatsApp Ecuador</a>
 
     <nav>
-        <div class="logo">SolarMind Tracker AI</div>
+        <div class="logo-txt">SolarMind AI</div>
         <div>
-            <a href="#mision">Nosotros</a>
-            <a href="#propuesta">Beneficios</a>
-            <a href="#mvp">Producto</a>
-            <a href="#testimonios">Testimonios</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#producto">Producto</a>
+            <a href="#contacto">Contacto</a>
         </div>
     </nav>
 
-    <header>
+    <header id="inicio">
         <h1>“Deja que la IA siga al sol por ti”</h1>
-        <p>“No es solo un panel solar, es un sistema que aprende del sol.”</p>
-        <a href="#contacto" class="btn btn-primary">¡ÚNETE A LA ENERGÍA INTELIGENTE!</a>
+        <p>No es solo un panel solar, es un sistema que <strong>aprende del sol</strong> para maximizar tu ahorro energético.</p>
+        <a href="#contacto" class="btn btn-primary">Solicitar Prueba Piloto</a>
     </header>
 
-    <section id="mision" class="mision-vision">
-        <div>
-            <h3>Nuestra Misión</h3>
-            <p>Democratizar el acceso a energía solar de alta eficiencia mediante el uso de Inteligencia Artificial, permitiendo que sectores agrícolas y rurales de Ecuador maximicen su producción sin aumentar su esfuerzo humano.</p>
-        </div>
-        <div>
-            <h3>Nuestra Visión</h3>
-            <p>Ser líderes en tecnología de seguimiento solar en Latinoamérica, transformando cada panel estático en un sistema inteligente capaz de adaptarse de forma autónoma a los cambios climáticos del planeta.</p>
-        </div>
-    </section>
-
-    <section id="propuesta">
-        <h2>Propuesta de Valor</h2>
-        <div class="grid" style="align-items: center;">
-            <ul class="propuesta-valor">
-                <li><span>✔</span> Incrementa la eficiencia energética entre 15% y 25%.</li>
-                <li><span>✔</span> Reduce pérdidas por mala orientación.</li>
-                <li><span>✔</span> Automatización sin intervención humana.</li>
-                <li><span>✔</span> Ideal para zonas rurales, agrícolas y pequeñas plantas solares.</li>
-            </ul>
-            <div style="text-align: center;">
-                <p><strong>Objetivo de la Campaña:</strong><br>Mostrar de forma clara que la inteligencia artificial mejora la eficiencia sin aumentar el esfuerzo del usuario.</p>
+    <section id="nosotros">
+        <div class="grid">
+            <div class="mv-card">
+                <h3>Nuestra Misión</h3>
+                <p>Llevar tecnología de punta al campo ecuatoriano, permitiendo que ningún vatio de sol se desperdicie a través de la inteligencia artificial y la automatización accesible.</p>
+            </div>
+            <div class="mv-card">
+                <h3>Nuestra Visión</h3>
+                <p>Convertirnos en el aliado tecnológico número uno del agro en Ecuador, transformando la matriz energética con sistemas que piensan y optimizan recursos de forma autónoma.</p>
             </div>
         </div>
     </section>
 
-    <section id="mvp" style="background: #f9f9f9;">
-        <h2>Tu Inversión Inteligente</h2>
-        <div style="max-width: 600px; margin: 0 auto;" class="card">
-            <img src="LOGO.JPG" alt="SolarMind Tracker AI" style="width:100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);" onerror="this.src='https://via.placeholder.com/600x400?text=LOGO.JPG+no+encontrado'">
-            <h3 style="text-align: center; color: var(--primary);">SolarMind v1.0</h3>
+    <section id="beneficios">
+        <div class="propuesta-box">
+            <div>
+                <h2>Propuesta de <span>Valor</span></h2>
+                <ul class="check-list">
+                    <li>Incrementa la eficiencia energética entre 15% y 25%.</li>
+                    <li>Reduce pérdidas por mala orientación.</li>
+                    <li>Automatización total sin intervención humana.</li>
+                    <li>Ideal para zonas rurales, agrícolas y plantas solares.</li>
+                </ul>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; text-align: center;">
+                <h3 style="color: var(--secondary); margin-top: 0;">Campaña 2026</h3>
+                <p>"Mejoramos la eficiencia energética sin aumentar el esfuerzo humano. Tecnología diseñada por y para ecuatorianos."</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="producto" style="background: var(--light);">
+        <h2>Nuestro <span>Producto</span></h2>
+        <div class="img-container">
+            <img src="LOGO.JPG" alt="SolarMind Tracker Prototipo" onerror="this.src='LOGO.jpg'; this.onerror=null;">
+            <p style="margin-top: 20px; font-weight: bold; color: var(--primary);">Modelo SolarMind Tracker AI v1.0 - Un eje horizontal inteligente</p>
         </div>
     </section>
 
     <section id="testimonios">
-        <h2>Lo que dicen nuestros clientes</h2>
+        <h2>Lo que dicen <span>nuestros clientes</span></h2>
         <div class="grid">
-            <div class="testimonio-card">
-                <p>"Desde que instalamos el tracker en la finca, el bombeo de agua es constante incluso en las tardes. Realmente se nota el cambio de eficiencia."</p>
-                <h4>— Ing. Roberto M. (Hacienda El Sol)</h4>
+            <div class="testimonio">
+                <p>"Instalamos 3 unidades en nuestra finca en Cayambe y el aumento en el bombeo de agua fue inmediato. La IA realmente hace la diferencia en días nublados."</p>
+                <span class="autor">Ing. Ricardo Paredes - Agrónomo</span>
             </div>
-            <div class="testimonio-card">
-                <p>"Me preocupaba que fuera difícil de usar, pero la IA hace todo. Yo solo reviso mi celular para ver cuánta energía estoy generando."</p>
-                <h4>— Familia Ortiz (Zona Rural Imbabura)</h4>
+            <div class="testimonio">
+                <p>"Es increíble ver cómo el panel busca el sol solito. Ya no tengo que preocuparme por ajustar nada manualmente. ¡Excelente producto!"</p>
+                <span class="autor">Sra. Martha Quiñónez - Propietaria Rural</span>
             </div>
-            <div class="testimonio-card">
-                <p>"Es una inversión que se paga sola. El panel siempre está de cara al sol mientras mis vecinos pierden horas de luz."</p>
-                <h4>— Juan C. (Emprendedor Agrícola)</h4>
+            <div class="testimonio">
+                <p>"Como técnico solar, SolarMind es la solución que esperábamos para proyectos pequeños que necesitan máxima eficiencia sin costos astronómicos."</p>
+                <span class="autor">Esteban V. - Técnico Instalador</span>
             </div>
         </div>
     </section>
 
-    <section id="contacto">
-        <h2 style="margin-bottom: 20px;">Contacto en Ecuador</h2>
-        <div style="text-align: center; background: var(--primary); color: white; padding: 40px; border-radius: 20px;">
-            <p>📍 Av. Amazonas N35-123 y La Pinta, Quito.</p>
-            <p>📞 +593 2 399-XXXX | 📱 +593 99 123 4567</p>
-            <p>✉️ contacto@solarmindtracker.ec</p>
-            <br>
-            <a href="mailto:contacto@solarmindtracker.ec" class="btn" style="background: white; color: var(--primary);">ENVIAR CORREO AHORA</a>
+    <footer id="contacto">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <h4>Contacto</h4>
+                <p>📍 <strong>Dirección:</strong> Av. de los Granados y Av. Eloy Alfaro, Edificio Granados Plaza, Oficina 402. Quito, Ecuador.</p>
+                <p>📞 <strong>Convencional:</strong> (02) 2999-021 / (02) 3555-309</p>
+                <p>📱 <strong>Celular:</strong> +593 98 765 4321 / +593 99 888 7766</p>
+                <p>✉️ <strong>Correo:</strong> ventas@solarmind.ec / info@solarmind.ec</p>
+            </div>
+            <div class="footer-info">
+                <h4>Horarios</h4>
+                <p>Lunes a Viernes: 08:30 - 18:00</p>
+                <p>Sábados: 09:00 - 13:00</p>
+            </div>
+            <div class="footer-info">
+                <h4>SolarMind AI</h4>
+                <p>Transformando el sol en inteligencia para el desarrollo del Ecuador.</p>
+            </div>
         </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 SolarMind Tracker AI - Innovación para el Agro Ecuatoriano</p>
-        <p><em>"No es solo un panel solar, es un sistema que aprende del sol."</em></p>
+        <div style="text-align: center; margin-top: 50px; border-top: 1px solid #333; padding-top: 20px; font-size: 0.9rem; color: #777;">
+            &copy; 2026 SolarMind Tracker AI. Todos los derechos reservados. Quito - Ecuador.
+        </div>
     </footer>
 
 </body>
