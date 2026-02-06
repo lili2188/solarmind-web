@@ -15,7 +15,7 @@
 
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: var(--dark); line-height: 1.6; scroll-behavior: smooth; }
         
-        nav { background: var(--white); padding: 15px 10%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        nav { background: var(--white); padding: 15px 10%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,[...]
         nav .logo { font-weight: bold; font-size: 1.5rem; color: var(--primary); }
         nav a { text-decoration: none; color: var(--dark); margin-left: 20px; font-weight: 500; transition: 0.3s; }
         nav a:hover { color: var(--secondary); }
@@ -35,8 +35,12 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         
         /* Estilo para la imagen del producto */
-        .product-image-container { text-align: center; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin: 20px auto; max-width: 600px; }
+        .product-image-container { text-align: center; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin: 20px auto; max-width: 900px; }
+        .product-image-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
         .product-image-container img { width: 100%; height: auto; border-radius: 10px; border: 2px solid var(--primary); }
+        @media (max-width: 700px) {
+            .product-image-row { grid-template-columns: 1fr; }
+        }
 
         .card { background: var(--light); padding: 30px; border-radius: 15px; text-align: center; }
         .propuesta-lista { list-style: none; padding: 0; font-size: 1.1rem; }
@@ -45,7 +49,7 @@
 
         .testimonio-card { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 5px solid var(--secondary); font-style: italic; }
 
-        .wsp-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .wsp-btn { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-[...]
 
         footer { background: var(--dark); color: white; padding: 40px 10%; text-align: center; }
     </style>
@@ -59,6 +63,7 @@
         <div>
             <a href="#mision">Empresa</a>
             <a href="#propuesta">Beneficios</a>
+            <a href="#componentes">Componentes</a>
             <a href="#mvp">Producto</a>
             <a href="#contacto">Contacto</a>
         </div>
@@ -92,15 +97,57 @@
         </ul>
     </section>
 
+    <section id="componentes" style="background:#fff;">
+        <h2>Componentes clave</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Tracker</h3>
+                <p>Tracker solar de un eje (horizontal) que ajusta el azimut para seguir la trayectoria del sol.</p>
+            </div>
+            <div class="card">
+                <h3>Sensores</h3>
+                <p>Sensores básicos: radiación solar (pyranómetro o foto-resistencias), temperatura ambiente y orientación (encoders o IMU).</p>
+            </div>
+            <div class="card">
+                <h3>Módulo IoT</h3>
+                <p>Módulo IoT para recolección y envío de datos: telemetría de radiación, temperatura, estado del tracker y energía generada.</p>
+            </div>
+            <div class="card">
+                <h3>Algoritmo de IA</h3>
+                <p>Algoritmo básico que:</p>
+                <ul style="text-align:left; margin:12px 0 0 18px;">
+                    <li>• Ajusta el ángulo del panel según iluminación y orientaciones pasadas.</li>
+                    <li>• Aprende del comportamiento solar diario para predecir posiciones óptimas.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Plataforma web</h3>
+                <p>Visualización de energía generada y comparación con un panel fijo (gráficas simples, histórico y KPIs).</p>
+            </div>
+        </div>
+    </section>
+
     <section id="mvp" style="background: #f4f4f4;">
         <h2>Nuestro Producto</h2>
         <div class="product-image-container">
-            <img src="LOGO.JPG" 
-                 alt="Prototipo SolarMind" 
-                 id="imgProducto"
-                 onerror="this.onerror=null; this.src='LOGO.jpg'; this.alt='Revisa que el archivo esté en la misma carpeta y se llame LOGO.JPG';">
-            <p><small>(Imagen real del prototipo SolarMind v1.0)</small></p>
+            <div class="product-image-row">
+                <div>
+                    <img src="logo.jpg" 
+                         alt="Prototipo SolarMind" 
+                         id="imgProducto"
+                         onerror="this.onerror=null; this.src='logo.JPG'; this.alt='Revisa que el archivo esté en la misma carpeta y se llame logo.jpg';">
+                    <p><small>(Logo / prototipo SolarMind)</small></p>
+                </div>
+                <div>
+                    <img src="panel-solar.jpg"
+                         alt="Panel solar - SolarMind"
+                         id="imgPanel"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1509391366360-fe5bb584850a?auto=format&fit=crop&w=1200&q=80';">
+                    <p><small>(Imagen del panel solar)</small></p>
+                </div>
+            </div>
         </div>
+        <p style="text-align:center; max-width:900px; margin:12px auto 0;">Descripción rápida: SolarMind combina un tracker de un eje con sensores y un módulo IoT que alimenta un algoritmo de IA para optimizar el ángulo del panel y aumentar la producción respecto a un sistema fijo.</p>
     </section>
 
     <section id="testimonios">
